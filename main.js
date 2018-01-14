@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
   let ySpeed = 5;
   let ballX = 350;
   let ballY = 500;
-  let ballXA = 5;
-  let ballYA = 5;
+  // let ballXA = 5;
+  // let ballYA = 5;
 
   function draw(){
     // board
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function move(){
-    ballX += ballXA;
-    ballY += ballYA;
+    ballX += xSpeed;
+    ballY += ySpeed;
   }
   start();
 });
