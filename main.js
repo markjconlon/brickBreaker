@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   const canvas = document.getElementById('canvas');
   let ctx = canvas.getContext('2d');
-  let xSpeed = 5;
+  let xSpeed = 6;
   let ySpeed = 5;
   let ballX = 350;
   let ballY = 500;
@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function move(){
+    if (ballX > canvas.width || ballX < 0) {
+      xSpeed = -1 * xSpeed
+    } else if (ballY > canvas.height || ballY < 0) {
+      ySpeed = -1 * ySpeed
+    }
     ballX += xSpeed;
     ballY += ySpeed;
   }
