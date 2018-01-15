@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function draw(){
     // board
-    ctx.fillStyle = "blue";
+    drawRect(0,0,canvas.width,canvas.height,"blue")
 
     // ball
     ctx.fillStyle = "red";
@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
     ctx.fill();
   }
 
-  function drawRect(){
+  function drawRect(x, y, width, height, color){
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
   }
 
   function start(){
