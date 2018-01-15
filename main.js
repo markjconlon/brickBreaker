@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", function() {
   let ballY = 500;
   // let ballXA = 5;
   // let ballYA = 5;
+  const paddleWidth = 75;
+  const paddleHeight = 10;
+  let paddleX = canvas.width/2 - paddleWidth/2;
+  let paddleY = canvas.height-10;
 
   function draw(){
     // board
@@ -17,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function() {
     ctx.beginPath();
     ctx.arc(ballX, ballY, 10, 0,Math.PI*2, true);
     ctx.fill();
+
+    // paddle
+    drawRect(paddleX,paddleY,paddleWidth,paddleHeight,"white")
   }
 
   function drawRect(x, y, width, height, color){
