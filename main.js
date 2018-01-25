@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const canvas = document.getElementById('canvas');
-  let ctx = canvas.getContext('2d');
+  const canvas = document.getElementById("canvas");
+  let ctx = canvas.getContext("2d");
   let xSpeed = 6;
   let ySpeed = 5;
   let ballX = 350;
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const paddleHeight = 10;
   let paddleX = canvas.width/2 - paddleWidth/2;
   let paddleY = canvas.height-10;
+  let bricks = [];
 
   document.addEventListener("keydown", function(e){
     if (e.keyCode === 37) {
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function draw(){
     // board
-    drawRect(0,0,canvas.width,canvas.height,"blue")
+    drawRect(0,0,canvas.width,canvas.height,"blue");
 
     // ball
     ctx.fillStyle = "red";
@@ -35,7 +36,10 @@ document.addEventListener("DOMContentLoaded", function() {
     ctx.fill();
 
     // paddle
-    drawRect(paddleX,paddleY,paddleWidth,paddleHeight,"white")
+    drawRect(paddleX,paddleY,paddleWidth,paddleHeight,"white");
+    bricks.forEach(function(brick){
+      drawRect(brick.brickName.x, brick.brickName.y, brick.brickName.width, brick.brickName.height, brick.brickName.color);
+    });
   }
 
   function drawRect(x, y, width, height, color){
@@ -43,7 +47,21 @@ document.addEventListener("DOMContentLoaded", function() {
     ctx.fillRect(x, y, width, height);
   }
 
+  function generateBricks(){
+    for (var i = 0; i < 8; i++) {
+      let spacing = 50;
+      if (i === 0) {
+        let brick = {brickName: {color: "red", x: 2*spacing, y: 50, width: 40, height: 30}}
+        bricks.push(brick);
+      } else {
+        let brick = {brickName: {color: "red", x: 2*(i+1)*spacing, y: 50, width: 40, height: 30}}
+        bricks.push(brick);
+      }
+    }
+  }
+
   function start(){
+    generateBricks();
     setInterval(function () {
       draw();
       move();
